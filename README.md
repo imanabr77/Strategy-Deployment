@@ -10,6 +10,11 @@ To install the Argo rollouts plugin
 > ./install-argo-rollouts-plugin.sh
 
 
+
+
+
+
+
 ### What is a Canary Deployment?
 
 * It involves deploying a new version of an application alongside the existing one.
