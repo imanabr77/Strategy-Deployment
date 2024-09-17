@@ -2,6 +2,9 @@
 
 Canary deployment is a software deployment strategy that gradually rolls out new versions of an application to a small subset of users before fully releasing it to everyone.
 
+Inside this repo is one of the Canary strategy implementation scenarios using Argo rollout, which requires that CRD or Argo rollouts be installed on the Kubernetes cluster where this scenario is implemented.
+
+
 ### What is a Canary Deployment?
 
 * It involves deploying a new version of an application alongside the existing one.
