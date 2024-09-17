@@ -7,3 +7,11 @@ Canary deployment is a software deployment strategy that gradually rolls out new
 * It involves deploying a new version of an application alongside the existing one.
 * A small percentage of traffic is routed to the new version while the rest continues on the old version.
 * This allows testing the new version in a production-like environment with real users.
+
+### How it Works
+
+1. Initially, 100% of traffic goes to the current stable version.
+2. The new version (canary) is deployed but only receives a small fraction of traffic (e.g., 5-10%).
+3. As confidence grows, more traffic is gradually shifted to the canary version.
+4. If issues arise, traffic can quickly be switched back to the original version.
+5. Once deemed stable, all traffic is directed to the new version.
