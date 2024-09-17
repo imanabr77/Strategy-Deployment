@@ -31,10 +31,6 @@ To install the Argo rollouts plugin
 * Helps capacity planning by testing resource usage with live data.
 * Reduces risk by not fully replacing the existing version until proven stable.
 
-### Comparison to Other Strategies
-
-* Different from blue/green deployment where only one version is shown to users at a time.
-* More flexible than simple rolling updates in Kubernetes, allowing fine-tuned traffic splits.
 
 ### Implementation Considerations
 
