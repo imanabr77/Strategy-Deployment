@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: rollouts-demo-servicemonitor
+  namespace: test
+spec:
+  endpoints:
+  - interval: 1m
+    port: rollouts-demo-tcp
+    path: /metrics
+    scheme: http
+    relabelings:
+    - sourceLabels: [__meta_kubernetes_pod_label_rollout_phase]
+      targetLabel: rollout_phase
+  - interval: 1m
+    port: metrics
+    path: /metrics
+    scheme: http
+  - interval: 1m
+    port: automate
+    path: /metrics
+    scheme: http
+  selector:
+    matchLabels:
+      name: rollouts-demo

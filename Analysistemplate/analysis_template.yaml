@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: rollouts-demo-metrics-analysis
+spec:
+  metrics:
+  - name: http-500-ratio
+    interval: 10s
+    count: 2
+    successCondition: len(result) == 0 || result[0] < {{ "{{" }} args.THRESHOLD {{ "}}" }}
+    failureLimit: 2
+    provider:
+      prometheus:
+        address: YOUR_DATASOURCE_ADDRESS
+        query: |-
+          (
+            sum(rate(rollouts_demo_requests_total{code=~"5.*", rollout_phase="canary"}[{{ "{{" }} args.INTERVAL {{ "}}" }}]))
+            /
+            (count(up{rollout_phase="canary"}))
+          ) /
+          (
+            sum(rate(rollouts_demo_requests_total{code=~"5.*", rollout_phase="stable"}[{{ "{{" }} args.INTERVAL {{ "}}" }}]))
+            /
+            (count(up{rollout_phase="stable"}))
+          )
+  - name: panic-ratio
+    interval: 10s
+    count: 2
+    successCondition: len(result) == 0 || result[0] < {{ "{{" }} args.THRESHOLD {{ "}}" }}
+    failureLimit: 2
+    provider:
+      prometheus:
+        address: YOUR_DATA SOURCE_ADDRESS
+        query: |-
+          (
+            sum(rate(rollouts_demo_total{service="rollouts-demo",namespace="test", rollout_phase="canary"}[{{ "{{" }} args.INTERVAL {{ "}}" }}]))
+            /
+            (count(up{service="rollouts-demo",namespace="test", rollout_phase="canary"}))
+          ) /
+          (
+            sum(rate(rollouts_demo_total{service="rollouts-demo",namespace="finance", rollout_phase="stable"}[{{ "{{" }} args.INTERVAL {{ "}}" }}]))
+            /
+            (count(up{service="rollouts-demo",namespace="test", rollout_phase="stable"}))
+          )
+
+  args:
+  - name: THRESHOLD
+  - name: INTERVAL
