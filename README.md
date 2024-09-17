@@ -23,3 +23,17 @@ Canary deployment is a software deployment strategy that gradually rolls out new
 * Helps capacity planning by testing resource usage with live data.
 * Reduces risk by not fully replacing the existing version until proven stable.
 
+### Comparison to Other Strategies
+
+* Different from blue/green deployment where only one version is shown to users at a time.
+* More flexible than simple rolling updates in Kubernetes, allowing fine-tuned traffic splits.
+
+### Implementation Considerations
+
+* Requires tools or custom scripts to manage traffic routing between versions.
+* Can be implemented manually or automated through CI/CD pipelines.
+* May require additional monitoring and alerting systems to detect issues quickly.
+
+Canary deployments provide a safer way to introduce changes to applications, especially for critical systems or large-scale deployments where downtime needs to be minimized.
+
+
