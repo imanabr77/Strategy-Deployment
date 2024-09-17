@@ -15,3 +15,11 @@ Canary deployment is a software deployment strategy that gradually rolls out new
 3. As confidence grows, more traffic is gradually shifted to the canary version.
 4. If issues arise, traffic can quickly be switched back to the original version.
 5. Once deemed stable, all traffic is directed to the new version.
+
+### Benefits
+
+* Allows early feedback from real users in a production-like environment.
+* Enables easy rollback if problems are detected.
+* Helps capacity planning by testing resource usage with live data.
+* Reduces risk by not fully replacing the existing version until proven stable.
+
