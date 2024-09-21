@@ -10,7 +10,9 @@ To install the Argo rollouts plugin
 > ./install-argo-rollouts-plugin.sh
 
 
+For argo rollout dashboard 
 
+> kubectl argo rollouts dashboard
 
 
 
